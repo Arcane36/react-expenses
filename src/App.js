@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
+import ExpenseControls from "./components/Expenses/ExpenseControls";
 
 import "./index.css";
 
@@ -29,6 +30,7 @@ const DUMMY_EXPENSES = [
 
 const App = () => {
     const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
+    const [isAddingExpense, setIsAddingExpense] = useState(false);
 
     const addExpenseHandler = (expense) => {
         setExpenses((prevExpenses) => {
@@ -36,10 +38,18 @@ const App = () => {
         });
     };
 
+    const addNewExpenseHandler = () => {
+        setIsAddingExpense(!isAddingExpense);
+    };
+
     return (
         <div>
-            <h1>Výdaje</h1>
-            <NewExpense onAddExpense={addExpenseHandler} />
+            <h1>Expenses</h1>
+            {isAddingExpense ? (
+                <NewExpense onAddExpense={addExpenseHandler} />
+            ) : (
+                <ExpenseControls setIsAddingExpense={addNewExpenseHandler} />
+            )}
             <Expenses expenses={expenses} />
         </div>
     );
