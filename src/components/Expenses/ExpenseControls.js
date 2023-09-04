@@ -1,12 +1,16 @@
-const ExpenseControls = ({ setIsAddingExpense }) => {
-    const onClickHandler = () => {
-        setIsAddingExpense();
-    };
+import Card from "../UI/Card";
 
+const ExpenseControls = ({ toggleExpenseState }) => {
     return (
-        <>
-            <button onClick={onClickHandler}>Add new expense</button>
-        </>
+        <Card className='new-expense'>
+            <button
+                onClick={() => {
+                    toggleExpenseState();
+                }}
+            >
+                Add new expense
+            </button>
+        </Card>
     );
 };
 

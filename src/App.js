@@ -38,7 +38,7 @@ const App = () => {
         });
     };
 
-    const addNewExpenseHandler = () => {
+    const toggleExpenseState = () => {
         setIsAddingExpense(!isAddingExpense);
     };
 
@@ -46,9 +46,9 @@ const App = () => {
         <div>
             <h1>Expenses</h1>
             {isAddingExpense ? (
-                <NewExpense onAddExpense={addExpenseHandler} />
+                <NewExpense onAddExpense={addExpenseHandler} toggleExpenseState={toggleExpenseState} />
             ) : (
-                <ExpenseControls setIsAddingExpense={addNewExpenseHandler} />
+                <ExpenseControls toggleExpenseState={toggleExpenseState} />
             )}
             <Expenses expenses={expenses} />
         </div>
