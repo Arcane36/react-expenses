@@ -15,7 +15,7 @@ const ExpenseForm = ({ onSaveExpenseData, toggleExpenseState }) => {
         const expenseData = {
             id: Math.random().toString(),
             title: enteredTitle,
-            amount: enteredAmount,
+            amount: +enteredAmount, //převádím na int
             date: new Date(enteredDate),
         };
 
